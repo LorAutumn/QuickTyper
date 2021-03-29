@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 export default function App() {
     const [t, setT] = useState('')
+    const [word, setWord] = useState('hi')
+    const [count, setCount] = useState(0)
 
     return (
         <div className='App'>
@@ -13,13 +15,14 @@ export default function App() {
                     value={t}
                     className='input'
                     onChange={e => setT(e.target.value)}></input>
-                {t === 'hi' ? <div>hi</div> : null}
+                <p className='answer'>word count: {count}</p>
+                {t === word ? <div>correct!</div> : null}
             </div>
         </div>
     )
 }
 
-// if word correct then setT to new Word
+// if word correct then setT to new Word (mock = ho)
 // if word incorrect then print end text: you got x words correct
 // input box empty
 // count correct word up
