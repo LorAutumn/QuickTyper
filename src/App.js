@@ -5,6 +5,20 @@ export default function App() {
     const [word, setWord] = useState('hi')
     const [count, setCount] = useState(0)
 
+    const wordProcesser = () => {
+        if (t === word) {
+            setWord('ho')
+            setT('')
+        }
+    }
+
+    const counterLogic = () => {
+        if (t === word) setCount(count + 1)
+    }
+
+    wordProcesser()
+    counterLogic()
+
     return (
         <div className='App'>
             <div className='wrapper'>
@@ -15,14 +29,9 @@ export default function App() {
                     value={t}
                     className='input'
                     onChange={e => setT(e.target.value)}></input>
-                <p className='answer'>word count: {count}</p>
+                <p className='word-count'>word count: {count}</p>
                 {t === word ? <div>correct!</div> : null}
             </div>
         </div>
     )
 }
-
-// if word correct then setT to new Word (mock = ho)
-// if word incorrect then print end text: you got x words correct
-// input box empty
-// count correct word up
