@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 export default function App() {
     const [t, setT] = useState('')
@@ -6,10 +6,17 @@ export default function App() {
     const [count, setCount] = useState(0)
     const wordLength = t.length - 1
 
+    const gameOver = () => {
+        alert(`Game Over! You got ${count} words`)
+        setWord('hi')
+        setT('')
+        setCount(0)
+    }
+
     const wordProcesser = () => {
         if (t === '') return
         if (t[wordLength] !== word[wordLength]) {
-            alert(`Game Over! You got ${count} words`)
+            gameOver()
         }
         if (t === word) {
             setWord('ho')
@@ -24,14 +31,12 @@ export default function App() {
     wordProcesser()
     counterLogic()
 
-    console.log(word[2])
-
     return (
         <div className='App'>
             <div className='wrapper'>
                 <h1>Word Guess !!</h1>
                 <h2>Type as fast as you can!</h2>
-                <h3>hi</h3>
+                <h3>{word}</h3>
                 <input
                     value={t}
                     className='input'
