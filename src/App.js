@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    const [t, setT] = useState('')
+
+    return (
+        <div className='App'>
+            <div className='wrapper'>
+                <h1>Word Guess !!</h1>
+                <h2>Type as fast as you can!</h2>
+                <h3>hi</h3>
+                <input
+                    value={t}
+                    className='input'
+                    onChange={e => setT(e.target.value)}></input>
+                {t === 'hi' ? <div>hi</div> : null}
+            </div>
+        </div>
+    )
 }
 
-export default App;
+// if word correct then setT to new Word
+// if word incorrect then print end text: you got x words correct
+// input box empty
+// count correct word up
