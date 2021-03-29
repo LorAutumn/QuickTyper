@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function App() {
     const [t, setT] = useState('')
     const [word, setWord] = useState('hi')
     const [count, setCount] = useState(0)
+    const wordLength = t.length - 1
 
     const wordProcesser = () => {
+        if (t === '') return
+        if (t[wordLength] !== word[wordLength]) {
+            alert(`Game Over! You got ${count} words`)
+        }
         if (t === word) {
             setWord('ho')
             setT('')
@@ -18,6 +23,8 @@ export default function App() {
 
     wordProcesser()
     counterLogic()
+
+    console.log(word[2])
 
     return (
         <div className='App'>
