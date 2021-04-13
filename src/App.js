@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import GameOver from './Screens/gameOver'
+import GameOver from './Screens/GameOver'
+
+export const CountContext = React.createContext()
 
 // TODO : insert counter
 
@@ -74,7 +76,9 @@ export default function App() {
             <div className='wrapper'>
                 <h1>Word Guess !!</h1>
                 <h2>Type as fast as you can!</h2>
-                <GameOver />
+                <CountContext.Provider value={count}>
+                    <GameOver />
+                </CountContext.Provider>
                 <p>Time left: {counter} seconds</p>
                 <h3>{word}</h3>
                 <input
