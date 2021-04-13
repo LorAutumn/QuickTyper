@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Timer from 'tiny-timer'
+import GameOver from './Screens/gameOver'
 
 // TODO : insert counter
 
@@ -74,6 +74,7 @@ export default function App() {
             <div className='wrapper'>
                 <h1>Word Guess !!</h1>
                 <h2>Type as fast as you can!</h2>
+                <GameOver />
                 <p>Time left: {counter} seconds</p>
                 <h3>{word}</h3>
                 <input
