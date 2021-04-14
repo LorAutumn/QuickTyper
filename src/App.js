@@ -37,11 +37,6 @@ export default function App() {
             return () => clearInterval(timer)
         } else if (counter === 0) gameOver()
     }, [counter])
-    /*
-    useEffect(() => {
-        setCounter(10)
-    }, [word])
-    */
 
     const startGame = () => {
         setActive(true)
