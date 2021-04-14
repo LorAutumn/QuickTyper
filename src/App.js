@@ -4,7 +4,8 @@ import GameOver from './Screens/GameOver'
 
 export const CountContext = React.createContext()
 
-// TODO : insert counter
+// TODO : write reset timer function
+// TODO : write function to restart game on gameOver
 
 export default function App() {
     const [t, setT] = useState('')
@@ -13,8 +14,10 @@ export default function App() {
     const wordLength = t.length - 1
     const wordApi = 'https://random-word-api.herokuapp.com/word?number=1000'
     const [words, setWords] = useState([]) // fetched words from api
-    const [counter, setCounter] = useState(9)
+    const [counter, setCounter] = useState(10)
     const [active, setActive] = useState(false)
+    const [time, setTime] = useState(10)
+    const [timerId, setTimerId] = useState(null)
 
     //fetches 1000 random words from api on app initial load
     useEffect(() => {
@@ -29,19 +32,37 @@ export default function App() {
         console.log('fetched')
     }, [])
 
-    // 10 seconds timer
-    useEffect(() => {
-        if (active === true && counter > 0) {
-            const timer =
-                counter > 0 && setInterval(() => setCounter(counter - 1), 1000)
-            return () => clearInterval(timer)
-        } else if (counter === 0) gameOver()
-    }, [counter])
+    /*async function timing() {
+        let promise = new Promise((resolve, reject) => {
+            resolve(time)
+        })
+        timi = time - 1
+        setTime(timi)
+        return timi
+    }*/
+    console.log('zeit', time)
 
-    const startGame = () => {
-        setActive(true)
-        console.log(active)
-        setCounter(10)
+    function zeit() {
+        if (time >= 1) {
+            setTime(prevCount => prevCount - 1)
+        } else {
+            clearInterval(timerId)
+            setTimerId(null)
+        }
+    }
+
+    useEffect(() => {
+        if (time === 0) gameOver()
+    }, [time])
+
+    function startStopTimer() {
+        if (timerId) {
+            clearInterval(timerId)
+            setTimerId(null)
+        } else {
+            //setTimerId(setInterval(() => zeit(), 1000))
+            setTimerId(setInterval(zeit, 1000))
+        }
     }
 
     //returns alert whith count of correct typed words and sets a new word, resets setT and resets the counter
@@ -50,6 +71,7 @@ export default function App() {
         setWord(words[getRandomInt(0, 1000)])
         setT('')
         setActive(false)
+        clearInterval(timerId)
     }
 
     // returns random int between min and max
@@ -64,7 +86,6 @@ export default function App() {
         if (t === word) {
             setWord(words[getRandomInt(0, 1000)])
             setT('')
-            setCounter(10)
         }
     }
 
@@ -81,16 +102,11 @@ export default function App() {
             <div className='wrapper'>
                 <h1>Word Guess !!</h1>
                 <h2>Type as fast as you can!</h2>
-                <button
-                    onClick={() => {
-                        startGame()
-                    }}>
-                    start
-                </button>
+                <button onClick={() => startStopTimer()}>start</button>
                 <CountContext.Provider value={count}>
                     <GameOver />
                 </CountContext.Provider>
-                <p>Time left: {counter} seconds</p>
+                <p>Time left: {time} seconds</p>
                 <h3>{word}</h3>
                 <input
                     value={t}
