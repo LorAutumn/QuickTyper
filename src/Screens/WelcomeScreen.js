@@ -6,14 +6,16 @@ function WelcomeScreen() {
 
     return (
         <div className='welcome-screen-wrapper'>
-            <h2>Welcome to the Game!</h2>
-            <p>
-                Type the displayed words without miss-spelling within 10
-                seconds!
-            </p>
-            <button className='start-button' onClick={startStop}>
-                Press to Start
-            </button>
+            <div className='welcome-screen-content'>
+                <h2>Welcome to the Game!</h2>
+                <p>
+                    Type the displayed words within 10 seconds without
+                    miss-spelling !
+                </p>
+                <button className='start-button' onClick={startStop}>
+                    Press to Start
+                </button>
+            </div>
         </div>
     )
 }

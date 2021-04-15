@@ -66,7 +66,6 @@ export default function App() {
 
     //returns alert whith count of correct typed words and sets a new word, resets setT and resets the counter
     const gameOver = () => {
-        alert(`Game Over! You got ${count} words`)
         setWord(words[getRandomInt(0, 1000)])
         setT('')
         clearInterval(timerId)
@@ -100,7 +99,7 @@ export default function App() {
     counterLogic()
 
     return (
-        <div className='App'>
+        <div className='App' style={{ filter: 'blur(3 px)' }}>
             <div className='wrapper'>
                 <h1>Word Guess !!</h1>
                 <h2>Type as fast as you can!</h2>

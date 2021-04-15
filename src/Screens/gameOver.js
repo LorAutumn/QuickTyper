@@ -9,12 +9,14 @@ function GameOver() {
     console.log('count', count)
 
     return (
-        <div>
-            <h2>Game Over</h2>
-            <p>You got {count} words</p>
-            <button onClick={startStop} className='restart-button'>
-                restart?
-            </button>
+        <div className='game-over-wrapper'>
+            <div className='game-over-content'>
+                <h2>Game Over</h2>
+                <p>You got {count} words</p>
+                <button onClick={startStop} className='restart-button'>
+                    restart?
+                </button>
+            </div>
         </div>
     )
 }
