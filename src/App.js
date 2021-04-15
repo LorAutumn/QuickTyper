@@ -10,6 +10,7 @@ export const StartStopContext = React.createContext()
 // TODO : write function to restart game on gameOver
 
 export default function App() {
+    const [initialStart, setInitialStart] = useState(true)
     const [t, setT] = useState('')
     const [word, setWord] = useState('hi')
     const [count, setCount] = useState(0)
@@ -59,6 +60,8 @@ export default function App() {
         if (timerId) return
         setCount(0)
         setTimerId(setInterval(zeit, 1000))
+        setGameEnded(false)
+        if (initialStart) setInitialStart(false)
     }
 
     //returns alert whith count of correct typed words and sets a new word, resets setT and resets the counter
@@ -101,13 +104,12 @@ export default function App() {
             <div className='wrapper'>
                 <h1>Word Guess !!</h1>
                 <h2>Type as fast as you can!</h2>
-                <button onClick={() => startTimer()}>start</button>
                 <StartStopContext.Provider value={startTimer}>
-                    <WelcomeScreen />
+                    {initialStart ? <WelcomeScreen /> : null}
+                    <CountContext.Provider value={count}>
+                        {gameEnded ? <GameOver /> : null}
+                    </CountContext.Provider>
                 </StartStopContext.Provider>
-                <CountContext.Provider value={count}>
-                    {gameEnded ? <GameOver /> : null}
-                </CountContext.Provider>
                 <p>Time left: {time} seconds</p>
                 <h3>{word}</h3>
                 <input
