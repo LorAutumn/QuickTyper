@@ -32,14 +32,6 @@ export default function App() {
         console.log('fetched')
     }, [])
 
-    /*async function timing() {
-        let promise = new Promise((resolve, reject) => {
-            resolve(time)
-        })
-        timi = time - 1
-        setTime(timi)
-        return timi
-    }*/
     console.log('zeit', time)
 
     function zeit() {
@@ -72,6 +64,7 @@ export default function App() {
         setT('')
         setActive(false)
         clearInterval(timerId)
+        setTime(10)
     }
 
     // returns random int between min and max
