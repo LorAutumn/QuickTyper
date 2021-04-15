@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import GameOver from './Screens/GameOver'
+import WelcomeScreen from './Screens/WelcomeScreen'
 
 export const CountContext = React.createContext()
+export const StartStopContext = React.createContext()
 
 // TODO : write reset timer function
 // TODO : write function to restart game on gameOver
@@ -14,8 +16,7 @@ export default function App() {
     const wordLength = t.length - 1
     const wordApi = 'https://random-word-api.herokuapp.com/word?number=1000'
     const [words, setWords] = useState([]) // fetched words from api
-    const [counter, setCounter] = useState(10)
-    const [active, setActive] = useState(false)
+    const [gameEnded, setGameEnded] = useState(false)
     const [time, setTime] = useState(10)
     const [timerId, setTimerId] = useState(null)
 
@@ -62,9 +63,9 @@ export default function App() {
         alert(`Game Over! You got ${count} words`)
         setWord(words[getRandomInt(0, 1000)])
         setT('')
-        setActive(false)
         clearInterval(timerId)
         setTime(10)
+        setGameEnded(true)
     }
 
     // returns random int between min and max
@@ -96,8 +97,11 @@ export default function App() {
                 <h1>Word Guess !!</h1>
                 <h2>Type as fast as you can!</h2>
                 <button onClick={() => startStopTimer()}>start</button>
+                <StartStopContext.Provider value={startStopTimer}>
+                    <WelcomeScreen />
+                </StartStopContext.Provider>
                 <CountContext.Provider value={count}>
-                    <GameOver />
+                    {gameEnded ? <GameOver /> : null}
                 </CountContext.Provider>
                 <p>Time left: {time} seconds</p>
                 <h3>{word}</h3>
