@@ -49,13 +49,16 @@ export default function App() {
     }, [time])
 
     function startStopTimer() {
-        if (timerId) {
+        /*if (timerId) {
             clearInterval(timerId)
             setTimerId(null)
         } else {
             //setTimerId(setInterval(() => zeit(), 1000))
             setTimerId(setInterval(zeit, 1000))
-        }
+        }*/
+        if (timerId) return
+        setCount(0)
+        setTimerId(setInterval(zeit, 1000))
     }
 
     //returns alert whith count of correct typed words and sets a new word, resets setT and resets the counter
@@ -64,6 +67,7 @@ export default function App() {
         setWord(words[getRandomInt(0, 1000)])
         setT('')
         clearInterval(timerId)
+        setTimerId(null)
         setTime(10)
         setGameEnded(true)
     }
@@ -80,6 +84,7 @@ export default function App() {
         if (t === word) {
             setWord(words[getRandomInt(0, 1000)])
             setT('')
+            setTime(10)
         }
     }
 
