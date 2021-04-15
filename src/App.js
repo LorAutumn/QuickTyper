@@ -48,7 +48,7 @@ export default function App() {
         if (time === 0) gameOver()
     }, [time])
 
-    function startStopTimer() {
+    function startTimer() {
         /*if (timerId) {
             clearInterval(timerId)
             setTimerId(null)
@@ -101,8 +101,8 @@ export default function App() {
             <div className='wrapper'>
                 <h1>Word Guess !!</h1>
                 <h2>Type as fast as you can!</h2>
-                <button onClick={() => startStopTimer()}>start</button>
-                <StartStopContext.Provider value={startStopTimer}>
+                <button onClick={() => startTimer()}>start</button>
+                <StartStopContext.Provider value={startTimer}>
                     <WelcomeScreen />
                 </StartStopContext.Provider>
                 <CountContext.Provider value={count}>
