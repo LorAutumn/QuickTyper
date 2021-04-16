@@ -33,6 +33,17 @@ body {
   text-align: center;
   flex-direction: column;
 }
+@media (min-width: 550px) {
+  .wrapper {
+    font-size: xx-large;
+  }
+}
+@media (min-width: 360px) {
+  .wrapper {
+    font-size: x-large;
+    display: block;
+  }
+}
 
 .game-over-wrapper,
 .welcome-screen-wrapper {
@@ -58,4 +69,29 @@ body {
   width: 10%;
   border-radius: 10px;
   background-color: #00b7ff;
+}
+@media (min-width: 550px) {
+  .game-over-content .restart-button,
+.game-over-content .start-button,
+.welcome-screen.content .restart-button,
+.welcome-screen.content .start-button {
+    font-size: xx-large;
+    width: 30%;
+  }
+}
+@media (min-width: 360px) {
+  .game-over-content .restart-button,
+.game-over-content .start-button,
+.welcome-screen.content .restart-button,
+.welcome-screen.content .start-button {
+    font-size: xx-large;
+    width: 40%;
+  }
+}
+
+@media (min-width: 360px) {
+  .input {
+    font-size: xx-large;
+    width: 80%;
+  }
 }/*# sourceMappingURL=styles.css.map */
