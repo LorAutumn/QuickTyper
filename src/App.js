@@ -104,7 +104,10 @@ export default function App() {
                 className={`wrapper ${
                     initialStart || gameEnded ? 'blurred' : 'not-blurred'
                 }`}>
-                <h1>Word Guess !!</h1>
+                <h1>
+                    <i class='far fa-keyboard'></i> Quick Typer{' '}
+                    <i class='far fa-keyboard'></i>
+                </h1>
                 <h2>Type as fast as you can!</h2>
                 <StartStopContext.Provider value={startTimer}>
                     {initialStart ? <WelcomeScreen /> : null}
