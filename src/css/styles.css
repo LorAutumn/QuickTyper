@@ -6,14 +6,6 @@ body {
   background-size: cover;
 }
 
-.App {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 .blurred > * {
   filter: blur(1.5px);
   transition: all 0.2s;
@@ -44,6 +36,11 @@ body {
     display: block;
   }
 }
+@media (min-width: 1000px) {
+  .wrapper {
+    font-size: 120%;
+  }
+}
 
 .game-over-wrapper,
 .welcome-screen-wrapper {
@@ -61,6 +58,19 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 120%;
+}
+@media (min-width: 550px) {
+  .game-over-content,
+.welcome-screen.content {
+    font-size: 150%;
+  }
+}
+@media (min-width: 1000px) {
+  .game-over-content,
+.welcome-screen.content {
+    font-size: 120%;
+  }
 }
 .game-over-content .restart-button,
 .game-over-content .start-button,
@@ -69,29 +79,41 @@ body {
   width: 10%;
   border-radius: 10px;
   background-color: #00b7ff;
+  font-size: 200%;
+  width: 50%;
 }
 @media (min-width: 550px) {
   .game-over-content .restart-button,
 .game-over-content .start-button,
 .welcome-screen.content .restart-button,
 .welcome-screen.content .start-button {
-    font-size: xx-large;
+    font-size: 150%;
     width: 30%;
   }
 }
-@media (min-width: 360px) {
+@media (min-width: 1000px) {
   .game-over-content .restart-button,
 .game-over-content .start-button,
 .welcome-screen.content .restart-button,
 .welcome-screen.content .start-button {
-    font-size: xx-large;
-    width: 40%;
+    font-size: 120%;
+    width: 10%;
   }
 }
 
-@media (min-width: 360px) {
+.input {
+  width: 80%;
+  font-size: 150%;
+}
+@media (min-width: 550px) {
   .input {
     font-size: xx-large;
-    width: 80%;
+    width: 60%;
+  }
+}
+@media (min-width: 1000px) {
+  .input {
+    font-size: 120%;
+    width: 30%;
   }
 }/*# sourceMappingURL=styles.css.map */
