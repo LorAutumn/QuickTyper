@@ -81,6 +81,7 @@ body {
   background-color: #00b7ff;
   font-size: 200%;
   width: 50%;
+  margin-bottom: 23px;
 }
 @media (min-width: 550px) {
   .game-over-content .restart-button,
