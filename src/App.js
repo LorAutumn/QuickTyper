@@ -99,8 +99,11 @@ export default function App() {
     counterLogic()
 
     return (
-        <div className='App' style={{ filter: 'blur(3 px)' }}>
-            <div className='wrapper'>
+        <div className='App'>
+            <div
+                className={`wrapper ${
+                    initialStart || gameEnded ? 'blurred' : 'not-blurred'
+                }`}>
                 <h1>Word Guess !!</h1>
                 <h2>Type as fast as you can!</h2>
                 <StartStopContext.Provider value={startTimer}>
